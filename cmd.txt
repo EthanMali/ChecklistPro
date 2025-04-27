@@ -1,0 +1,3 @@
+ go build -ldflags "-s -w -H=windowsgui -extldflags=-static -extldflags=-lucrt"  
+
+ go build -ldflags="-s -w -H=windowsgui -extldflags=-static -extldflags=-lucrt" -o ChecklistPro.exe .
