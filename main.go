@@ -12,7 +12,7 @@ import (
 
 var aircraftChecklists = make(map[string][]ChecklistCategory)
 var currentChecklistIndex int32 = 0
-var WIDTH float32 = 200 // Width for the combo box
+
 var (
 	errorMessage   string
 	showErrorPopup bool
@@ -59,51 +59,67 @@ func DrawUI() {
 	}
 
 	g.SingleWindow().Layout(
-		g.Label("Aircraft Checklist Program"),
-		g.Combo("Select Aircraft", aircrafts[currentAircraft], aircrafts, &currentAircraft).Size(150),
-		g.Separator(),
+		g.Label("ChecklistPro v1.0"),
+		g.Row(
+			g.Combo("Select Aircraft", aircrafts[currentAircraft], aircrafts, &currentAircraft).Size(150),
+			g.Combo("Select Checklist", currentChecklist[currentChecklistIndex].Title, getChecklistTitles(), &currentChecklistIndex).Size(150),
+		),
+		g.Row(
+			g.Dummy(0, 0),
+			g.Separator(),
+			g.Dummy(0, 0),
+		),
 		showError(),
 
-		// Only show checklist UI if we have checklists loaded
-		g.Condition(len(currentChecklist) > 0,
-			g.Layout{
-				g.Combo("Select Checklist", currentChecklist[currentChecklistIndex].Title, getChecklistTitles(), &currentChecklistIndex).Size(150),
-				g.Separator(),
+		// Checklist UI (always shown)
+		g.Layout{
+			g.Column(
+				g.Dummy(0, 10),
+				g.Style().
+					SetFontSize(24).To(
+					g.Label(fmt.Sprintf("%s ", currentChecklist[currentChecklistIndex].Title)),
+				),
+			),
 
-				g.Label(fmt.Sprintf("- %s -", currentChecklist[currentChecklistIndex].Title)),
-				// Put checklist in its own container with a border
-				g.Layout{
-					g.Row(
-						g.Button("<- Previous Checklist").OnClick(prevChecklist),
-						g.Button("Next Checklist ->").OnClick(nextChecklist),
-					),
-				},
-
+			g.Row(
 				g.Child().Size(500, 500).Border(true).Layout(
 					buildChecklistLayout(),
 				),
+			),
+
+			g.Layout{
+				g.Child().Size(70, 38).Border(true).Layout(
+					g.Row(
+						g.Row(
+							prevChecklist(),
+							g.Button("->").OnClick(nextChecklist),
+						),
+					),
+				),
+
 				g.Label(getProgressText()),
 				g.Button("Reset Checklist").OnClick(resetCurrentChecklist),
 			},
-			g.Label("No checklist available for this aircraft"),
-		),
+		},
 	)
 }
-
 func getAircaftChecklist() []ChecklistCategory {
 	aircraft := aircrafts[currentAircraft]
 	if checklist, exists := aircraftChecklists[aircraft]; exists {
 		return checklist
 	}
+	// Show error popup if checklist is not found
+	errorMessage = fmt.Sprintf("No checklist found for %s", aircraft)
+	showErrorPopup = true
 	return nil
 }
 
 func loadChecklist(aircraft string) error {
-	filename := fmt.Sprintf("Resources/%s-Checklist.json", aircraft)
-	filepath := filepath.Clean(filename)
+	filename := fmt.Sprintf("Resources/checklists/%s-Checklist.json", aircraft)
+	cleanedPath := filepath.Clean(filename)
 
 	//read data from file
-	data, err := os.ReadFile(filepath)
+	data, err := os.ReadFile(cleanedPath)
 	if err != nil {
 		errorMessage = fmt.Sprintf("Failed to read checklist file for %s: %v", aircraft, err)
 		showErrorPopup = true
@@ -142,13 +158,22 @@ func nextChecklist() {
 	}
 }
 
-func prevChecklist() {
-	currentChecklist := getAircaftChecklist()
-
-	currentChecklistIndex--
-
-	if currentChecklistIndex >= int32(len(currentChecklist)) {
-		currentChecklistIndex = int32(len(currentChecklist)) - 1 // Reset to the last checklist if all are completed
+func prevChecklist() g.Layout {
+	return g.Layout{
+		g.Row(
+			g.Condition(currentChecklistIndex == 0,
+				g.Layout{
+					g.Button("<-").Disabled(true),
+				},
+				g.Layout{
+					g.Button("<-").OnClick(func() {
+						if currentChecklistIndex > 0 {
+							currentChecklistIndex--
+						}
+					}),
+				},
+			),
+		),
 	}
 }
 
@@ -172,9 +197,10 @@ func getProgressText() string {
 		return "No checklist available."
 	}
 	items := currentChecklist[currentChecklistIndex].Items
+
 	complete := 0
-	for _, items := range items {
-		if items.Checked {
+	for _, item := range items {
+		if item.Checked {
 			complete++
 		}
 	}
@@ -224,7 +250,7 @@ func showError() g.Layout {
 			g.Label(errorMessage),
 			g.Separator(),
 			g.Button("OK").OnClick(func() {
-				showErrorPopup = false
+				showErrorPopup = true
 			}),
 		).IsOpen(&showErrorPopup),
 	}
