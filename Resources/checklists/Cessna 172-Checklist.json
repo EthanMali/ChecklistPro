@@ -1,0 +1,149 @@
+[
+    {
+        "Title":"Pre-Flight", 
+        "Items": [
+            {"Text": "Parking Brake - Set", "Checked": false},
+            {"Text": "Ingnition Switch - OFF", "Checked": false},
+            {"Text": "Avionics - OFF", "Checked": false},
+            {"Text": "Master Switch - ON", "Checked": false},
+            {"Text": "Fuel Level - Checked", "Checked": false},
+            {"Text": "Avionics - ON and fan audible", "Checked": false},
+            {"Text": "Avionics - OFF", "Checked": false},
+            {"Text": "Fuel Selector - CHECK OPERATION", "Checked": false},
+            {"Text": "Annunciator Panel - CHECKED", "Checked": false},
+            {"Text": "Master Switch - OFF", "Checked": false},
+            {"Text": "Documents - On Board", "Checked": false}
+        ]
+    },
+    {
+
+        "Title":"Before Start",
+        "Items": [
+            {"Text": "Passenger Briefing - COMPLETE", "Checked": false},
+            {"Text": "Seats and Belts - Adjusted", "Checked": false},
+            {"Text": "Circuit Breakers - IN", "Checked": false},
+            {"Text": "Electrical Equipment - OFF", "Checked": false},
+            {"Text": "Avionics - OFF", "Checked": false},
+            {"Text": "Master Switch - ON", "Checked": false},
+            {"Text": "Fuel Selector - BOTH", "Checked": false},
+            {"Text": "Fuel Shutoff - FULL IN", "Checked": false}
+        ]
+    },
+    {
+        "Title":"Engine Start",
+        "Items": [
+            {"Text": "Throttle - 1/4 INCH OPEN", "Checked": false},
+            {"Text": "Mixture - RICH", "Checked": false},
+            {"Text": "Propeller Area - CLEAR", "Checked": false},
+            {"Text": "Master Switch - ON", "Checked": false},
+            {"Text": "Beacon Light - ON", "Checked": false},
+            {"Text": "Ingnition Switch - START", "Checked": false},
+            {"Text": "Oil Pressure - CHECK", "Checked": false},
+            {"Text": "Nav Lights - ON at night", "Checked": false}
+        ]
+    },
+    {
+        "Title":"After Start",
+        "Items": [
+            {"Text": "Avionics - ON", "Checked": false},
+            {"Text": "COM - ON / Set", "Checked": false},
+            {"Text": "NAV - ON / Set", "Checked": false},
+            {"Text": "Transponder - STANDBY", "Checked": false},
+            {"Text": "Altimeter - SET", "Checked": false},
+            {"Text": "Transponder - SET", "Checked": false},
+            {"Text": "Horizon - SET", "Checked": false}
+        ]
+    },
+    {
+        "Title":"Taxi",
+        "Items": [
+            {"Text": "Taxi Lights - ON", "Checked": false},
+            {"Text": "Parking Brake - UNLOCKED", "Checked": false},
+            {"Text": "Brakes - Tested", "Checked": false},
+            {"Text": "Instruments - CHECKED", "Checked": false}
+        ]
+    },
+    {
+        "Title":"Before Takeoff",
+        "Items": [
+            {"Text": "Parking Brake - Set", "Checked": false},
+            {"Text": "Seats and Belts - Adjusted", "Checked": false},
+            {"Text": "Cabin Doors - Locked", "Checked": false},
+            {"Text": "Flight Controls - FREE and CORRECT", "Checked": false},
+            {"Text": "Flight Instruments - CHECKED", "Checked": false},
+            {"Text": "Fuel Quantity - CHECKED", "Checked": false},
+            {"Text": "Mixture - RICH", "Checked": false},
+            {"Text": "Fuel Selector - Re-Check BOTH", "Checked": false},
+            {"Text": "Throttle - 1800 RPM", "Checked": false},
+            {"Text": "Magnetos - CHECK", "Checked": false},
+            {"Text": "Annunciator Panel - CHECKED", "Checked": false},
+            {"Text": "Throttle - IDLE", "Checked": false},
+            {"Text": "COM/NAV - SET", "Checked": false},
+            {"Text": "Transponder - ALT", "Checked": false},
+            {"Text": "Elevator Trim - Takeoff", "Checked": false},
+            {"Text": "Flaps - SET", "Checked": false},
+            {"Text": "Exterior Lights - ALL ON", "Checked": false}
+        ]
+    },
+    {
+        "Title":"Climb",
+        "Items":[
+            {"Text":"Power - FULL","Checked" :false},
+            {"Text":"Fuel Level/Temp - Checked","Checked" :false},
+            {"Text":"Flaps - UP","Checked" :false},
+            {"Text":"Engine Intruments - Checked","Checked" :false}
+        ]
+    },
+    {   "Title":"Cruise",
+        "Items":[
+            {"Text":"Power - ADJUSTED","Checked" :false},
+            {"Text":"Elevator Trim - ADJUSTED","Checked" :false},
+            {"Text":"Fuel Level - Monitor","Checked" :false},
+            {"Text":"Annunciator Panel - Monitor","Checked" :false}
+        ]
+    },
+    {
+        "Title":"Descent",
+        "Items":[
+            {"Text":"Power - ADJUSTED","Checked" :false},
+            {"Text":"Fuel Selector - BOTH","Checked" :false},
+            {"Text":"Landing/Taxi Lights - ON","Checked" :false},
+            {"Text":"Mixture - RICH","Checked" :false},
+            {"Text":"Altimeter - SET","Checked" :false},
+            {"Text":"Cabin - Checked","Checked" :false},
+            {"Text":"Flaps - 1st at 110kt","Checked" :false},
+            {"Text":"Elevator Trim - Set","Checked" :false},
+            {"Text":"Flaps - 2nd at 85kt","Checked" :false},
+            {"Text":"Elevator Trim - Set","Checked" :false}
+        ]
+    },
+    {
+        "Title":"Landing",
+        "Items":[
+            {"Text":"Flaps - Landing Position","Checked" :false},
+            {"Text":"Speed - 65-75kt","Checked" :false}
+        ]
+    },
+    {
+        "Title":"After Landing",
+        "Items":[
+            {"Text":"Flaps - UP","Checked" :false},
+            {"Text":"Navigation Instruments - OFF","Checked" :false},
+            {"Text":"Transponder - STANDBY","Checked" :false}
+        ]
+    },
+    {
+        "Title":"Shutdown",
+        "Items":[
+            {"Text":"Parking Brake - SET","Checked" :false},
+            {"Text":"Throttle - IDLE","Checked" :false},
+            {"Text":"Avionics - OFF", "Checked": false},
+            {"Text":"Transponder - OFF", "Checked": false},
+            {"Text":"Lights - ALL Off", "Checked": false},
+            {"Text":"Mixture - IDLE CUTOFF","Checked" :false},
+            {"Text":"Master Switch - OFF","Checked" :false},
+            {"Text":"Fuel Selector - RIGHT or LEFT","Checked" :false},
+            {"Text":"Chocks - PLACED", "Checked": false}
+        ]
+    }
+]
